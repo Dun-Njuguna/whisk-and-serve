@@ -1,24 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:whisk_and_serve/base_scaffold.dart';
+import 'package:whisk_and_serve/theme.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('App'),
-        ),
-        body: const Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text('App'),
-            ],
-          ),
+      theme: AppThemes.lightTheme, // Apply light theme
+      darkTheme: AppThemes.darkTheme, // Apply dark theme
+      themeMode: ThemeMode
+          .system, // Use system theme (auto switch between light and dark)
+      home: const HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BaseScaffold(
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            ElevatedButton(
+              onPressed: () => {},
+              child: const Text("App"),
+            ),
+          ],
         ),
       ),
     );
