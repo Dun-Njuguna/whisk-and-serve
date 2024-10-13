@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:whisk_and_serve/base_scaffold.dart';
-import 'package:whisk_and_serve/theme.dart';
+import 'package:whisk_and_serve/core/theme/theme.dart';
+import 'package:whisk_and_serve/features/widgets/base_scaffold.dart';
 
 void main() {
   runApp(const MyApp());

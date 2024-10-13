@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whisk_and_serve/colors.dart';
+import 'package:whisk_and_serve/core/colors/colors.dart';
 
 class AppThemes {
   // Light Theme
