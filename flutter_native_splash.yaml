@@ -3,12 +3,14 @@ flutter_native_splash:
   ios: true
   web: true
 
-  #background color
-  color: "#ffffff"         # Light mode background
-  color_dark: "#000000"     # Dark mode background
-  
-  #splash screen image
+  # Background color
+  color: "#ffffff"
+  color_dark: "#000000"
+
+  # Main splash screen image
   image: "assets/app_icon.png"
 
+
   android_12:
-    image: "assets/app_icon.png"
+    image: "assets/spash_icon_android.png"
+    icon_background_color: "#ffffff"
