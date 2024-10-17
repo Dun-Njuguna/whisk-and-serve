@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whisk_and_serve/router/custom_nav_bar.dart';
+import 'package:whisk_and_serve/router/nav/custom_nav_bar.dart';
 
 /// A [BaseScaffold] widget that includes a body and the singleton [CustomNavBar]
 /// at the bottom. This class acts as a base layout for screens requiring bottom navigation.
