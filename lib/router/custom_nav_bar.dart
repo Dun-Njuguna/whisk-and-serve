@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:go_router/go_router.dart';
+import 'package:go_router/go_router.dart';
+import 'package:whisk_and_serve/router/app_routes.dart';
 
 /// A [CustomNavBar] widget that acts as a singleton,
 /// ensuring that only one instance of the navigation bar exists.
@@ -24,39 +25,28 @@ class CustomNavBarState extends State<CustomNavBar> {
 
   /// List of navigation items that includes icons and labels.
   final List<Map<String, dynamic>> _navItems = [
-    {'icon': Icons.home, 'label': 'Home'},
-    {'icon': Icons.search, 'label': 'Search'},
-    {'icon': Icons.person, 'label': 'Profile'},
+    {'icon': Icons.home, 'label': 'Home', 'route': AppRoutes.home},
+    {'icon': Icons.search, 'label': 'Search', 'route': AppRoutes.favourites},
+    {'icon': Icons.person, 'label': 'Profile', 'route': AppRoutes.profile},
   ];
 
   /// Updates the current selected index and performs navigation
   /// based on the selected item index.
-  ///
-  /// The navigation logic (commented out) can be customized
-  /// according to the navigation system (e.g., GoRouter).
   void onItemTapped(BuildContext context, int index) {
     setState(() {
       currentIndex = index;
     });
-    switch (index) {
-      case 0:
-        // context.go('/home'); // Uncomment and update navigation paths
-        break;
-      case 1:
-        // context.go('/search');
-        break;
-      case 2:
-        // context.go('/profile');
-        break;
-    }
+    context.go(_navItems[index]['route']);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Align(
+    return Container(
+      height: 120,
       alignment: Alignment.bottomCenter,
       child: Card(
         color: Theme.of(context).colorScheme.onSurface,
+        margin: const EdgeInsets.only(bottom: 25),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),
         ),
