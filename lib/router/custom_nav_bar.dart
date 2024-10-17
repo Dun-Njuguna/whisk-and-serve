@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:whisk_and_serve/router/app_routes.dart';
+import 'package:whisk_and_serve/router/navitem.dart';
 
 /// A [CustomNavBar] widget that acts as a singleton,
 /// ensuring that only one instance of the navigation bar exists.
@@ -23,11 +24,11 @@ class CustomNavBar extends StatefulWidget {
 class CustomNavBarState extends State<CustomNavBar> {
   int currentIndex = 0;
 
-  /// List of navigation items that includes icons and labels.
-  final List<Map<String, dynamic>> _navItems = [
-    {'icon': Icons.home, 'label': 'Home', 'route': AppRoutes.home},
-    {'icon': Icons.search, 'label': 'Search', 'route': AppRoutes.favourites},
-    {'icon': Icons.person, 'label': 'Profile', 'route': AppRoutes.profile},
+  /// List of navigation items.
+  final List<NavItem> _navItems = [
+    NavItem(icon: Icons.home, label: 'Home', route: AppRoutes.home),
+    NavItem(icon: Icons.search, label: 'Search', route: AppRoutes.favourites),
+    NavItem(icon: Icons.person, label: 'Profile', route: AppRoutes.profile),
   ];
 
   /// Updates the current selected index and performs navigation
@@ -36,17 +37,16 @@ class CustomNavBarState extends State<CustomNavBar> {
     setState(() {
       currentIndex = index;
     });
-    context.go(_navItems[index]['route']);
+    context.go(_navItems[index].route);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 120,
+    return Align(
       alignment: Alignment.bottomCenter,
       child: Card(
         color: Theme.of(context).colorScheme.onSurface,
-        margin: const EdgeInsets.only(bottom: 25),
+        margin: const EdgeInsets.only(bottom: 15),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),
         ),
@@ -55,15 +55,10 @@ class CustomNavBarState extends State<CustomNavBar> {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: _navItems.asMap().entries.map((entry) {
-              int index = entry.key;
-              IconData icon = entry.value['icon'];
-              String label = entry.value['label'];
-
               return _buildNavItem(
                 context: context,
-                index: index,
-                icon: icon,
-                label: label,
+                index: entry.key,
+                navItem: entry.value,
               );
             }).toList(),
           ),
@@ -79,14 +74,11 @@ class CustomNavBarState extends State<CustomNavBar> {
   Widget _buildNavItem({
     required BuildContext context,
     required int index,
-    required IconData icon,
-    required String label,
+    required NavItem navItem,
   }) {
     bool isSelected = currentIndex == index;
     return GestureDetector(
-      onTap: () {
-        onItemTapped(context, index);
-      },
+      onTap: () => onItemTapped(context, index),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: AnimatedContainer(
@@ -101,15 +93,13 @@ class CustomNavBarState extends State<CustomNavBar> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(
-                icon,
+                navItem.icon,
                 color: isSelected ? Colors.white : Colors.black,
               ),
-              if (isSelected)
-                const SizedBox(
-                    width: 8), // Space between icon and label when selected
+              if (isSelected) const SizedBox(width: 8),
               if (isSelected)
                 Text(
-                  label,
+                  navItem.label,
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,

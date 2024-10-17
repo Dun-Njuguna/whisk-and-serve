@@ -14,8 +14,12 @@ class BaseScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: child,
-      bottomNavigationBar: CustomNavBar(),
+      body: Stack(
+        children: [
+          child,
+          CustomNavBar(),
+        ],
+      )
     );
   }
 }
