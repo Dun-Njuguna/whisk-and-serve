@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whisk_and_serve/core/theme/theme.dart';
-import 'package:whisk_and_serve/router/router.dart';
+import 'package:whisk_and_serve/core/router/router.dart';
 
 void main() {
   runApp(const MyApp());

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:whisk_and_serve/features/widgets/base_scaffold.dart';
-import 'package:whisk_and_serve/router/routes/favourites_routes.dart';
-import 'package:whisk_and_serve/router/routes/home_routes.dart';
-import 'package:whisk_and_serve/router/routes/profile_routes.dart';
+import 'package:whisk_and_serve/presentation/widgets/base_scaffold.dart';
+import 'package:whisk_and_serve/core/router/routes/favourites_routes.dart';
+import 'package:whisk_and_serve/core/router/routes/home_routes.dart';
+import 'package:whisk_and_serve/core/router/routes/profile_routes.dart';
 
 /// The main [GoRouter] instance responsible for handling navigation throughout the app.
 /// It uses a [ShellRoute] to provide a common base layout (e.g., [BaseScaffold])
@@ -29,9 +29,10 @@ final GoRouter router = GoRouter(
 /// [child] - The widget representing the new page.
 /// [state] - The current state of the [GoRouter], used to retrieve the unique [pageKey].
 ///
-/// The function uses a [FadeTransition] to smoothly transition between pages, with adjustable 
+/// The function uses a [FadeTransition] to smoothly transition between pages, with adjustable
 /// [transitionDuration] and [reverseTransitionDuration].
-CustomTransitionPage buildPageWithTransition(Widget child, GoRouterState state) {
+CustomTransitionPage buildPageWithTransition(
+    Widget child, GoRouterState state) {
   return CustomTransitionPage(
     key: state.pageKey,
     child: child,

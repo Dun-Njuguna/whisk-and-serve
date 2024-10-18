@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:whisk_and_serve/router/routes/app_routes.dart';
-import 'package:whisk_and_serve/router/nav/navitem.dart';
+import 'package:whisk_and_serve/core/router/routes/app_routes.dart';
+import 'package:whisk_and_serve/core/router/nav/navitem.dart';
 
 /// A [CustomNavBar] widget that acts as a singleton,
 /// ensuring that only one instance of the navigation bar exists.
