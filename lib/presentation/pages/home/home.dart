@@ -18,9 +18,6 @@ class HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Recipe Categories'),
-      ),
       body: BlocBuilder<RecipeCategoriesBloc, RecipeCategoriesState>(
         builder: (context, state) {
           if (state is RecipeCategoriesLoading) {
