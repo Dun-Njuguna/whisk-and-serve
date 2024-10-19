@@ -13,8 +13,6 @@ class HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
-    // Trigger the event to fetch recipe categories when the widget is initialized
-    context.read<RecipeCategoriesBloc>().add(FetchRecipeCategories());
   }
 
   @override
