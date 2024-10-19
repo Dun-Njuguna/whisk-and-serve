@@ -5,9 +5,9 @@ import 'package:whisk_and_serve/core/theme/theme.dart';
 import 'package:whisk_and_serve/core/router/router.dart';
 import 'package:whisk_and_serve/presentation/blocs/bloc/recipe_categories_bloc.dart';
 
-void main() {
-  // Dependency injection setup
-  setupLocator();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await setupLocator();
   runApp(const MyApp());
 }
 
