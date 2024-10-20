@@ -26,8 +26,8 @@ class CustomNavBarState extends State<CustomNavBar> {
 
   /// List of navigation items.
   final List<NavItem> _navItems = [
-    NavItem(icon: Icons.home, label: 'Home', route: AppRoutes.home),
-    NavItem(icon: Icons.search, label: 'Search', route: AppRoutes.favourites),
+    NavItem(icon: Icons.explore, label: 'Explore', route: AppRoutes.explore),
+    NavItem(icon: Icons.favorite, label: 'Favorites', route: AppRoutes.favourites),
     NavItem(icon: Icons.person, label: 'Profile', route: AppRoutes.profile),
   ];
 
@@ -45,7 +45,7 @@ class CustomNavBarState extends State<CustomNavBar> {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Card(
-        color: Theme.of(context).colorScheme.onSurface,
+        color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.8),
         margin: const EdgeInsets.only(bottom: 15),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),
@@ -86,7 +86,7 @@ class CustomNavBarState extends State<CustomNavBar> {
           width: isSelected ? 120 : 90,
           height: 40,
           decoration: BoxDecoration(
-            color: isSelected ? Colors.green : Colors.grey[200],
+            color: isSelected ? Theme.of(context).colorScheme.primary.withOpacity(0.8) : Colors.grey[200],
             borderRadius: BorderRadius.circular(30),
           ),
           child: Row(

@@ -16,7 +16,7 @@ final GoRouter router = GoRouter(
         return BaseScaffold(child: child);
       },
       routes: <RouteBase>[
-        homeRoutes,
+        exploreRoutes,
         favouritesRoutes,
         profileRoutes,
       ],
