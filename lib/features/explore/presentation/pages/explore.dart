@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:whisk_and_serve/domain/entities/category.dart';
-import 'package:whisk_and_serve/presentation/blocs/bloc/recipe_categories_bloc.dart';
+import 'package:whisk_and_serve/features/explore/domain/entities/category.dart';
+import 'package:whisk_and_serve/features/explore/presentation/bloc/recipe_categories_bloc.dart';
 
 class Explore extends StatefulWidget {
   const Explore({super.key});

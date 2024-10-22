@@ -1,8 +1,8 @@
-import 'package:whisk_and_serve/data/data_sources/local_data_source.dart';
-import 'package:whisk_and_serve/data/data_sources/remote_data_source.dart';
-import 'package:whisk_and_serve/data/models/category_model.dart';
-import 'package:whisk_and_serve/domain/entities/category.dart';
-import 'package:whisk_and_serve/domain/repositories/recipe_repository_interface.dart';
+import 'package:whisk_and_serve/features/explore/data/data_sources/local_data_source.dart';
+import 'package:whisk_and_serve/features/explore/data/data_sources/remote_data_source.dart';
+import 'package:whisk_and_serve/features/explore/data/models/category_model.dart';
+import 'package:whisk_and_serve/features/explore/domain/entities/category.dart';
+import 'package:whisk_and_serve/features/explore/domain/repositories/recipe_repository_interface.dart';
 
 class RecipeRepositoryImpl implements RecipeRepositoryInterface {
   final RecipeRemoteDataSource remoteDataSource;

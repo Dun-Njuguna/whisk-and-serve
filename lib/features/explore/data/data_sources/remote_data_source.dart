@@ -1,7 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import 'package:whisk_and_serve/data/models/category_model.dart';
+import 'package:whisk_and_serve/features/explore/data/models/category_model.dart';
 
 class RecipeRemoteDataSource {
   final String _baseUrl =

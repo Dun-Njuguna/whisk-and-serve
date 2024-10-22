@@ -1,6 +1,6 @@
 import 'package:isar/isar.dart';
-import 'package:whisk_and_serve/data/models/category_model.dart';
-import 'package:whisk_and_serve/domain/entities/category.dart';
+import 'package:whisk_and_serve/features/explore/data/models/category_model.dart';
+import 'package:whisk_and_serve/features/explore/domain/entities/category.dart';
 
 class LocalDataSource {
   final Isar isar;

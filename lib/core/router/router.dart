@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:whisk_and_serve/presentation/widgets/base_scaffold.dart';
+import 'package:whisk_and_serve/core/widgets/base_scaffold.dart';
 import 'package:whisk_and_serve/core/router/routes/favourites_routes.dart';
 import 'package:whisk_and_serve/core/router/routes/home_routes.dart';
 import 'package:whisk_and_serve/core/router/routes/profile_routes.dart';

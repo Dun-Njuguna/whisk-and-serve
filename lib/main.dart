@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:whisk_and_serve/core/di/service_locator.dart';
 import 'package:whisk_and_serve/core/theme/theme.dart';
 import 'package:whisk_and_serve/core/router/router.dart';
-import 'package:whisk_and_serve/presentation/blocs/bloc/recipe_categories_bloc.dart';
+import 'package:whisk_and_serve/features/explore/presentation/bloc/recipe_categories_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

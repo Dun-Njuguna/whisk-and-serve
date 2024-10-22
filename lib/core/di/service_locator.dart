@@ -1,12 +1,12 @@
 import 'package:get_it/get_it.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:whisk_and_serve/data/data_sources/local_data_source.dart';
-import 'package:whisk_and_serve/data/data_sources/remote_data_source.dart';
-import 'package:whisk_and_serve/data/repositories/recipe_repository_impl.dart';
-import 'package:whisk_and_serve/domain/entities/category.dart';
-import 'package:whisk_and_serve/domain/repositories/recipe_repository_interface.dart';
-import 'package:whisk_and_serve/domain/use_cases/get_recipe_categories.dart';
+import 'package:whisk_and_serve/features/explore/data/data_sources/local_data_source.dart';
+import 'package:whisk_and_serve/features/explore/data/data_sources/remote_data_source.dart';
+import 'package:whisk_and_serve/features/explore/data/repositories/recipe_repository_impl.dart';
+import 'package:whisk_and_serve/features/explore/domain/entities/category.dart';
+import 'package:whisk_and_serve/features/explore/domain/repositories/recipe_repository_interface.dart';
+import 'package:whisk_and_serve/features/explore/domain/use_cases/get_recipe_categories.dart';
 
 final sl = GetIt.instance;
 
