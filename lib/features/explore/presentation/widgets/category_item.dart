@@ -1,0 +1,44 @@
+import 'package:flutter/material.dart';
+import 'package:whisk_and_serve/features/explore/domain/entities/category.dart';
+
+
+class CategoryItem extends StatelessWidget {
+  const CategoryItem({
+    super.key,
+    required this.category,
+  });
+
+  final Category category;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 4,
+      color: Theme.of(context).colorScheme.primary.withOpacity(0.3),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image.network(
+            category.thumbUrl,
+            width: 120,
+            height:120,
+            fit: BoxFit.contain,
+          ),
+          const SizedBox(height: 8),
+          Text(
+            category.name,
+            style: Theme.of(context)
+                .textTheme
+                .bodyMedium
+                ?.copyWith(color: Theme.of(context).colorScheme.onSurface),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+    );
+  }
+}

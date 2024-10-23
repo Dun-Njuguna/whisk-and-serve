@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:whisk_and_serve/features/explore/domain/entities/category.dart';
+import 'package:whisk_and_serve/core/utils/breakpoints.dart';
 import 'package:whisk_and_serve/features/explore/presentation/bloc/recipe_categories_bloc.dart';
+import 'package:whisk_and_serve/features/explore/presentation/widgets/category_item.dart';
 
 class Explore extends StatefulWidget {
   const Explore({super.key});
@@ -21,18 +22,7 @@ class ExploreState extends State<Explore> {
           } else if (state is RecipeCategoriesLoaded) {
             return LayoutBuilder(
               builder: (context, constraints) {
-                // Determine the number of columns based on screen width
-                int columns = 2;
-                if (constraints.maxWidth > 600) {
-                  columns = 3;
-                }
-                if (constraints.maxWidth > 900) {
-                  columns = 4;
-                }
-                if (constraints.maxWidth > 1200) {
-                  columns = 5;
-                }
-
+                int columns = getColumnCount(screenWidth: constraints.maxWidth);
                 return GridView.builder(
                   itemCount: state.categories.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -53,47 +43,6 @@ class ExploreState extends State<Explore> {
           }
           return const Center(child: Text("Press refresh to load categories"));
         },
-      ),
-    );
-  }
-}
-
-class CategoryItem extends StatelessWidget {
-  const CategoryItem({
-    super.key,
-    required this.category,
-  });
-
-  final Category category;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      elevation: 4,
-      color: Theme.of(context).colorScheme.primary.withOpacity(0.3),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(30),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Image.network(
-            category.thumbUrl,
-            width: 120,
-            height:120,
-            fit: BoxFit.contain,
-          ),
-          const SizedBox(height: 8),
-          Text(
-            category.name,
-            style: Theme.of(context)
-                .textTheme
-                .bodyMedium
-                ?.copyWith(color: Theme.of(context).colorScheme.onSurface),
-            textAlign: TextAlign.center,
-          ),
-        ],
       ),
     );
   }
