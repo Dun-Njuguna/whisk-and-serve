@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:whisk_and_serve/core/widgets/app_card.dart';
 import 'package:whisk_and_serve/features/explore/domain/entities/category.dart';
-
 
 class CategoryItem extends StatelessWidget {
   const CategoryItem({
@@ -12,12 +12,7 @@ class CategoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 4,
-      color: Theme.of(context).colorScheme.primary.withOpacity(0.3),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(30),
-      ),
+    return AppCard(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -25,7 +20,7 @@ class CategoryItem extends StatelessWidget {
           Image.network(
             category.thumbUrl,
             width: 120,
-            height:120,
+            height: 120,
             fit: BoxFit.contain,
           ),
           const SizedBox(height: 8),
