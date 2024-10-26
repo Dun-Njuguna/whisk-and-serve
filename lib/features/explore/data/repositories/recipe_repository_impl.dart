@@ -1,8 +1,8 @@
 import 'package:whisk_and_serve/features/explore/data/data_sources/local_data_source.dart';
 import 'package:whisk_and_serve/features/explore/data/data_sources/remote_data_source.dart';
 import 'package:whisk_and_serve/features/explore/data/models/category_model.dart';
-import 'package:whisk_and_serve/features/explore/domain/entities/category.dart';
 import 'package:whisk_and_serve/features/explore/domain/repositories/recipe_repository_interface.dart';
+import 'package:whisk_and_serve_core/entities/category.dart';
 
 class RecipeRepositoryImpl implements RecipeRepositoryInterface {
   final RecipeRemoteDataSource remoteDataSource;
@@ -17,7 +17,7 @@ class RecipeRepositoryImpl implements RecipeRepositoryInterface {
 
   @override
   Future<List<Category>> getRecipeCategories() async {
-    // Check if there's valid cached data
+    // // Check if there's valid cached data
     final cachedCategories = await localDataSource.getCachedCategories();
 
     if (cachedCategories.isNotEmpty && _isCacheValid(cachedCategories)) {

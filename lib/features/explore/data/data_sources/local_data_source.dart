@@ -1,40 +1,30 @@
-import 'package:isar/isar.dart';
+import 'package:whisk_and_serve_core/data/isar_helpers.dart';
 import 'package:whisk_and_serve/features/explore/data/models/category_model.dart';
-import 'package:whisk_and_serve/features/explore/domain/entities/category.dart';
+import 'package:whisk_and_serve_core/entities/category.dart';
 
 class LocalDataSource {
-  final Isar isar;
+  final IsarHelpers isarHelpers;
 
-  LocalDataSource(this.isar);
+  LocalDataSource(this.isarHelpers);
 
-  // Fetch cached categories
   Future<List<Category>> getCachedCategories() async {
-    final cachedCategories = await isar.categorys.where().findAll();
-    return cachedCategories;
+    return await isarHelpers.getAll<Category>();
   }
 
-  // Cache categories
   Future<void> cacheCategories(List<CategoryModel> categories) async {
-    await isar.writeTxn(() async {
-      for (var categoryModel in categories) {
-        final newCategory = Category(
-          categoryId: categoryModel.idCategory,
-          name: categoryModel.strCategory,
-          thumbUrl: categoryModel.strCategoryThumb,
-          description: categoryModel.strCategoryDescription,
-        )..createdAt = DateTime.now();
+    final items = categories
+        .map((categoryModel) => Category(
+              categoryId: categoryModel.idCategory,
+              name: categoryModel.strCategory,
+              thumbUrl: categoryModel.strCategoryThumb,
+              description: categoryModel.strCategoryDescription,
+            ))
+        .toList();
 
-        await isar.categorys.put(newCategory);
-      }
-    });
+    await isarHelpers.putAll(items);
   }
 
-  // Clear expired categories based on a defined expiry duration
   Future<void> clearExpiredCategories(Duration expiryDuration) async {
-    final expiryDate = DateTime.now().subtract(expiryDuration);
-
-    await isar.writeTxn(() async {
-      await isar.categorys.filter().createdAtLessThan(expiryDate).deleteAll();
-    });
+    await isarHelpers.clearExpiredRecords<Category>(expiryDuration);
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:whisk_and_serve/core/widgets/app_card.dart';
-import 'package:whisk_and_serve/features/explore/domain/entities/category.dart';
+import 'package:whisk_and_serve_core/entities/category.dart';
+import 'package:whisk_and_serve_core/widgets/app_card.dart';
 
 class CategoryItem extends StatelessWidget {
   const CategoryItem({

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:whisk_and_serve/core/utils/breakpoints.dart';
 import 'package:whisk_and_serve/features/explore/presentation/bloc/recipe_categories_bloc.dart';
 import 'package:whisk_and_serve/features/explore/presentation/widgets/category_item.dart';
+import 'package:whisk_and_serve_core/utils/breakpoints.dart';
 
 class Explore extends StatefulWidget {
   const Explore({super.key});

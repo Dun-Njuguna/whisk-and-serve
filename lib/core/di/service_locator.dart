@@ -1,42 +1,29 @@
-import 'package:get_it/get_it.dart';
-import 'package:isar/isar.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:whisk_and_serve/features/explore/data/data_sources/local_data_source.dart';
 import 'package:whisk_and_serve/features/explore/data/data_sources/remote_data_source.dart';
 import 'package:whisk_and_serve/features/explore/data/repositories/recipe_repository_impl.dart';
-import 'package:whisk_and_serve/features/explore/domain/entities/category.dart';
 import 'package:whisk_and_serve/features/explore/domain/repositories/recipe_repository_interface.dart';
 import 'package:whisk_and_serve/features/explore/domain/use_cases/get_recipe_categories.dart';
-
-final sl = GetIt.instance;
+import 'package:whisk_and_serve_core/data/isar_helpers.dart';
+import 'package:whisk_and_serve_core/di/service_locator.dart';
 
 Future<void> setupLocator() async {
-  await _registerIsar();
-  _registerDataSources();
+  final x = await registerIsar();
+  print("object    $x");
+  _registerDataSources(x);
   _registerRepositories();
   _registerUseCases();
 }
 
-// Initialize and register Isar
-Future<void> _registerIsar() async {
-  final dir = await getApplicationDocumentsDirectory();
-  final isar = await Isar.open(
-    [
-      CategorySchema,
-    ],
-    directory: dir.path,
-  );
-
-  sl.registerSingleton<Isar>(isar);
-}
-
 // Register all data sources
-void _registerDataSources() {
+void _registerDataSources(Type x) {
+  sl.registerLazySingleton<IsarHelpers>(
+    () => IsarHelpers(sl()),
+  );
   sl.registerLazySingleton<RecipeRemoteDataSource>(
     () => RecipeRemoteDataSource(),
   );
   sl.registerLazySingleton<LocalDataSource>(
-    () => LocalDataSource(sl<Isar>()),
+    () => LocalDataSource(sl()),
   );
 }
 
