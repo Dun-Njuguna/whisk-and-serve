@@ -7,15 +7,14 @@ import 'package:whisk_and_serve_core/data/isar_helpers.dart';
 import 'package:whisk_and_serve_core/di/service_locator.dart';
 
 Future<void> setupLocator() async {
-  final x = await registerIsar();
-  print("object    $x");
-  _registerDataSources(x);
+  await registerIsar();
+  _registerDataSources();
   _registerRepositories();
   _registerUseCases();
 }
 
 // Register all data sources
-void _registerDataSources(Type x) {
+void _registerDataSources() {
   sl.registerLazySingleton<IsarHelpers>(
     () => IsarHelpers(sl()),
   );
