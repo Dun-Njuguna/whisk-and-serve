@@ -8,9 +8,7 @@ import 'package:whisk_and_serve_core/whisk_and_serve_core.dart';
 import 'package:whisk_and_serve/core/routes/favourites_routes.dart';
 import 'package:whisk_and_serve/core/routes/home_routes.dart';
 import 'package:whisk_and_serve/core/routes/profile_routes.dart';
-
-import 'package:whisk_and_serve_explore/features/categories/presentation/bloc/recipe_categories_bloc.dart';
-import 'package:whisk_and_serve_explore/features/meals/presentation/bloc/meals_bloc.dart';
+import 'package:whisk_and_serve_explore/whisk_and_serve_explore.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,6 +36,9 @@ class MyApp extends StatelessWidget {
       ),
       createBlocProvider<MealsBloc>(
         MealsBloc(getMealsByMainIngrident: sl()),
+      ),
+      createBlocProvider<MealDetailsBloc>(
+        MealDetailsBloc(getMealDetailsById: sl()),
       ),
     ]);
     return createMultiBlocProvider(
