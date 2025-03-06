@@ -5,6 +5,11 @@ import 'package:whisk_and_serve_explore/features/categories/domain/use_cases/get
 import 'package:whisk_and_serve_explore/features/meal_details/domain/usecases/get_meal_details_by_id.dart';
 import 'package:whisk_and_serve_explore/features/meals/domain/usecases/get_meals_by_main_ingrident.dart';
 import 'package:whisk_and_serve_explore/whisk_and_serve_explore.dart';
+import 'package:whisk_and_serve_favourites/favourites/domain/usecases/add_to_favourites.dart';
+import 'package:whisk_and_serve_favourites/favourites/domain/usecases/get_favourites.dart';
+import 'package:whisk_and_serve_favourites/favourites/domain/usecases/is_favourite.dart';
+import 'package:whisk_and_serve_favourites/favourites/domain/usecases/remove_from_favourites.dart';
+import 'package:whisk_and_serve_favourites/whisk_and_serve_favourites.dart';
 
 Future<void> setupLocator() async {
   await registerIsar();
@@ -42,6 +47,10 @@ void _registerDataSources() {
   sl.registerLazySingleton<MealDetailsRemoteDataSource>(
     () => MealDetailsRemoteDataSource(client: sl()),
   );
+
+  sl.registerLazySingleton<FavouritesLocalDataSource>(
+    () => FavouritesLocalDataSourceImpl(client: sl()),
+  );
 }
 
 // Register all repositories
@@ -62,6 +71,12 @@ void _registerRepositories() {
       remoteDataSource: sl(),
     ),
   );
+
+  sl.registerLazySingleton<FavouritesRepositoryInterface>(
+    () => FavouritesRepositoryImpl(
+      localDataSource: sl(),
+    ),
+  );
 }
 
 // Register all use cases
@@ -74,5 +89,22 @@ void _registerUseCases() {
   );
   sl.registerLazySingleton<GetMealDetailsById>(
     () => GetMealDetailsById(repository: sl()),
+  );
+
+  // Favourites Use cases
+  sl.registerLazySingleton<AddToFavourites>(
+    () => AddToFavourites(repository: sl()),
+  );
+
+  sl.registerLazySingleton<GetFavourites>(
+    () => GetFavourites(repository: sl()),
+  );
+
+  sl.registerLazySingleton<IsFavourite>(
+    () => IsFavourite(repository: sl()),
+  );
+
+  sl.registerLazySingleton<RemoveFromFavourites>(
+    () => RemoveFromFavourites(repository: sl()),
   );
 }

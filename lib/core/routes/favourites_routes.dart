@@ -1,7 +1,7 @@
 import 'package:whisk_and_serve_core/router/app_route_config.dart';
 import 'package:whisk_and_serve_core/router/app_routes.dart';
 import 'package:whisk_and_serve_core/router/router.dart';
-import 'package:whisk_and_serve_favourites/presentation/favourites.dart';
+import 'package:whisk_and_serve_favourites/favourites/presentation/pages/favourites.dart';
 
 /// Defines the route for the favourites page in the app.
 ///

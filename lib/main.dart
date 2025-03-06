@@ -9,6 +9,7 @@ import 'package:whisk_and_serve/core/routes/favourites_routes.dart';
 import 'package:whisk_and_serve/core/routes/home_routes.dart';
 import 'package:whisk_and_serve/core/routes/profile_routes.dart';
 import 'package:whisk_and_serve_explore/whisk_and_serve_explore.dart';
+import 'package:whisk_and_serve_favourites/favourites/presentation/bloc/favourites_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,7 +41,16 @@ class MyApp extends StatelessWidget {
       createBlocProvider<MealDetailsBloc>(
         MealDetailsBloc(getMealDetailsById: sl()),
       ),
+      createBlocProvider<FavouritesBloc>(
+        FavouritesBloc(
+          addToFavourites: sl(),
+          getFavourites: sl(),
+          isFavourite: sl(),
+          removeFromFavourites: sl(),
+        ),
+      ),
     ]);
+
     return createMultiBlocProvider(
       providers: bloc_providers,
       child: MaterialApp.router(
