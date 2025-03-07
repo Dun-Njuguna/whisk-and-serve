@@ -46,6 +46,7 @@ dependencies:
     path: ../whisk_and_serve_favourites
   whisk_and_serve_explore:
     path: ../whisk_and_serve_explore
+  provider: ^6.1.2
 
 dev_dependencies:
   flutter_test:

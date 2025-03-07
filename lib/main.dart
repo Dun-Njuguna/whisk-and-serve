@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:whisk_and_serve/core/di/service_locator.dart';
 
 import 'package:whisk_and_serve_core/router/nav/custom_nav_bar.dart';
-import 'package:whisk_and_serve_core/theme/theme.dart';
+import 'package:whisk_and_serve_core/theme/theme_provider.dart';
 import 'package:whisk_and_serve_core/whisk_and_serve_core.dart';
 
 import 'package:whisk_and_serve/core/routes/favourites_routes.dart';
@@ -14,7 +15,12 @@ import 'package:whisk_and_serve_favourites/favourites/presentation/bloc/favourit
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupLocator();
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ThemeProvider(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -31,6 +37,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     bloc_providers.addAll([
       createBlocProvider<RecipeCategoriesBloc>(
         RecipeCategoriesBloc(getRecipeCategories: sl()),
@@ -54,9 +62,9 @@ class MyApp extends StatelessWidget {
     return createMultiBlocProvider(
       providers: bloc_providers,
       child: MaterialApp.router(
-        theme: AppThemes.lightTheme,
-        darkTheme: AppThemes.darkTheme,
-        themeMode: ThemeMode.system,
+        theme: themeProvider.lightTheme,
+        darkTheme: themeProvider.darkTheme,
+        themeMode: themeProvider.themeMode,
         routerConfig: router(routes: appRoutes),
       ),
     );

@@ -11,7 +11,7 @@ import 'package:whisk_and_serve_core/router/router.dart';
 /// ```
 final profileRoutes = createGoRoute(
   AppRouteConfig(
-    parentPath: AppRoutes.profile,
+    parentPath: AppRoutes.settings,
     parentWidget: const Profile(),
     childRoutes: [
       // Add child routes if needed
